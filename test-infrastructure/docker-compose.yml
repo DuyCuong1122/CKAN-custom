@@ -11,6 +11,8 @@ services:
     environment:
       POSTGRES_USER: ckan
       POSTGRES_PASSWORD: ckan
+    ports:
+      - 0.0.0.0:15432:5432
 
   ckan-redis:
     networks:
@@ -46,4 +48,4 @@ services:
     command:
       ['tail', '-f', '/etc/debian_version']
     ports:
-      - 0.0.0.0:5000:5000
+      - 0.0.0.0:5001:5000

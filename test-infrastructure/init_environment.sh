@@ -11,7 +11,7 @@ createdb --encoding=utf-8 --host=ckan-postgres --username=ckan --owner=${CKAN_DA
 ckan -c test-core-ci.ini datastore set-permissions | psql --host=ckan-postgres --username=ckan
 psql --host=ckan-postgres --username=ckan --dbname=${CKAN_DATASTORE_POSTGRES_DB} --command="CREATE extension tablefunc;"
 ckan -c test-core-ci.ini db init
-gunzip .test_durations.gz
+gunzip -f .test_durations.gz || true
 
 # git doesn't like having the directory owned by a different user, and
 # we're mounting this in from external, so we don't know the uid/gid.
