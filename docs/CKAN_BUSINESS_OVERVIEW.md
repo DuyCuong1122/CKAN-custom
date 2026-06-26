@@ -1,18 +1,18 @@
-# CKAN Business Overview
+# Nghiệp vụ tổng quan
 
 ## 1. Executive Summary
 
-CKAN là một nền tảng quản lý và công bố dữ liệu dùng để xây dựng cổng dữ liệu tập trung cho tổ chức, doanh nghiệp hoặc cơ quan nhà nước. Về mặt nghiệp vụ, CKAN giải quyết bài toán chuẩn hóa việc thu thập, mô tả, công bố, tìm kiếm, truy cập và tái sử dụng dữ liệu thay vì để dữ liệu nằm rải rác trong email, thư mục dùng chung, hệ thống nội bộ hoặc từng nhóm chuyên môn riêng lẻ.
+CKAN là một nền tảng quản lý và công bố dữ liệu dùng để xây dựng cổng dữ liệu tập trung cho tổ chức. Về nghiệp vụ, CKAN giải quyết bài toán chuẩn hóa việc thu thập, mô tả, công bố, tìm kiếm, truy cập và tái sử dụng dữ liệu thay vì để dữ liệu nằm rải rác trong email, thư mục dùng chung, hệ thống nội bộ hoặc từng nhóm chuyên môn riêng lẻ.
 
-Trong hệ thống hiện tại của repo này, CKAN đóng vai trò là:
+Vai trò:
 
 - Cổng catalog dữ liệu tập trung cho toàn tổ chức.
-- Điểm quản trị metadata của dataset.
-- Nền tảng kiểm soát quyền truy cập theo organization, vai trò người dùng và mức public/private.
+- Quản lý metadata của dataset.
+- Kiểm soát quyền truy cập theo organization, vai trò người dùng và mức public/private.
 - Điểm truy cập API và giao diện web cho tìm kiếm, xem và tái sử dụng dữ liệu.
 - Hệ thống tích hợp với PostgreSQL, Solr, Redis và DataStore để phục vụ lưu trữ, tìm kiếm và khai thác dữ liệu dạng bảng.
 
-### CKAN giải quyết bài toán gì?
+### Bài toán
 
 - Thiếu một nơi duy nhất để biết tổ chức đang có những dataset nào.
 - Metadata không đồng nhất, khó tìm, khó hiểu, khó tái sử dụng.
@@ -22,14 +22,14 @@ Trong hệ thống hiện tại của repo này, CKAN đóng vai trò là:
 
 ### Đối tượng sử dụng
 
-- Product Owner cần nhìn toàn cảnh sản phẩm dữ liệu và giá trị mang lại.
-- Business Analyst cần hiểu quy trình nghiệp vụ, vai trò và lifecycle của dataset.
-- Data Governance Team cần chuẩn hóa metadata, quyền truy cập và data quality.
-- Data Engineer cần hiểu luồng upload, resource, DataStore và API khai thác.
-- Developer mới cần hiểu model, action API, search index và kiến trúc hệ thống.
-- Người làm PowerPoint cần một cấu trúc nội dung rõ ràng, chia được thành slide.
+- **Data Owner**: Chịu trách nhiệm tạo, cập nhật và công bố dataset thuộc đơn vị mình quản lý.
+- **Data Steward / Data Governance Team**: Chuẩn hóa metadata, kiểm soát chất lượng dữ liệu, quản lý vòng đời dataset và đảm bảo tuân thủ các quy định về quản trị dữ liệu.
+- **Data Consumer**: Tìm kiếm, xem, tải xuống hoặc truy cập dữ liệu thông qua API để phục vụ phân tích, báo cáo và các ứng dụng nghiệp vụ.
+- **Organization Administrator**: Quản lý thành viên, phân quyền truy cập và điều phối việc công bố dữ liệu trong phạm vi tổ chức hoặc đơn vị.
+- **System Administrator (SysAdmin)**: Quản trị toàn bộ nền tảng CKAN, bao gồm cấu hình hệ thống, người dùng, phân quyền và vận hành hạ tầng.
+- **Developer / System Integrator**: Tích hợp CKAN với các hệ thống khác thông qua Action API, Data API hoặc các extension/plugin nhằm xây dựng quy trình quản lý và khai thác dữ liệu.
 
-### Giá trị mang lại
+### Giá trị
 
 - Tăng khả năng tìm thấy dữ liệu.
 - Chuẩn hóa cách mô tả và công bố dataset.
@@ -37,18 +37,7 @@ Trong hệ thống hiện tại của repo này, CKAN đóng vai trò là:
 - Rút ngắn thời gian từ lúc tạo dataset đến lúc dataset được tìm thấy và tái sử dụng.
 - Tạo nền tảng cho data governance, open data và self-service analytics.
 
-### Trả lời câu hỏi: "Tại sao doanh nghiệp cần CKAN?"
-
-Doanh nghiệp cần CKAN khi dữ liệu đã trở thành tài sản nhưng chưa được quản lý như một sản phẩm. CKAN biến dữ liệu từ trạng thái "có nhưng khó tìm, khó hiểu, khó dùng" thành "được quản trị, có metadata, có quyền truy cập, có API, có khả năng tìm kiếm và tái sử dụng". Nói ngắn gọn, CKAN không chỉ lưu dữ liệu, mà tổ chức hóa dữ liệu để tạo giá trị kinh doanh.
-
-### Phạm vi và giả định
-
-- Tài liệu này dựa trên CKAN core trong repo hiện tại, cùng các cấu hình và tài liệu đi kèm.
-- Repo hiện tại phản ánh rõ kiến trúc lõi, action API, model dữ liệu, cơ chế search, quyền truy cập và cấu hình triển khai.
-- Phần "Data Quality Scoring" không thấy có module chấm điểm mặc định trong CKAN core của repo này, nên phần đó được trình bày như một mô hình nghiệp vụ đề xuất dựa trên metadata hiện có.
-- "Organization" trong CKAN core được lưu chung trong bảng `group`, được phân biệt bằng `type='organization'` hoặc cờ `is_organization`.
-
----
+***
 
 ## 2. Các khái niệm nghiệp vụ chính
 
@@ -66,12 +55,6 @@ Organization là đơn vị sở hữu dataset. Đây thường là phòng ban, 
 - Là đơn vị phân quyền chính cho dataset private.
 - Là lớp quản trị để gắn người dùng vào các vai trò Member, Editor, Admin.
 
-**Ví dụ**
-
-- Khối Tài chính
-- Trung tâm Dữ liệu Khách hàng
-- Sở Giao thông
-
 ### Group
 
 **Mục đích**
@@ -83,12 +66,6 @@ Group dùng để gom các dataset theo chủ đề hoặc cộng đồng quan t
 - Hỗ trợ phân loại nghiệp vụ theo domain hoặc chủ đề.
 - Giúp người dùng duyệt dữ liệu theo taxonomy dễ hơn.
 - Tăng khả năng khám phá dataset theo chủ đề.
-
-**Ví dụ**
-
-- Môi trường
-- Giáo dục
-- Giao thông công cộng
 
 ### Dataset
 
@@ -169,17 +146,17 @@ Data Quality trong bối cảnh CKAN chủ yếu phản ánh mức độ đầy 
 
 ### Bảng tóm tắt khái niệm
 
-| Khái niệm | Ý nghĩa | Ví dụ |
-| --------- | ------- | ----- |
-| Organization | Đơn vị sở hữu và quản trị dataset | Khối Tài chính |
-| Group | Nhóm phân loại dataset theo chủ đề | Môi trường |
-| Dataset | Sản phẩm dữ liệu trung tâm trong catalog | Bộ dữ liệu giao dịch tháng |
-| Resource | Nguồn truy cập cụ thể của dataset | File CSV, API, Excel |
-| Tag | Từ khóa mô tả nhanh dataset | finance, traffic, climate |
-| User | Người sử dụng hoặc quản trị hệ thống | SysAdmin, Editor |
-| Data Quality | Mức độ đầy đủ và sẵn sàng sử dụng của dataset | Dataset có title, notes, tag, resource |
+| Khái niệm    | Ý nghĩa                                       |
+| ------------ | --------------------------------------------- |
+| Organization | Đơn vị sở hữu và quản trị dataset             |
+| Group        | Nhóm phân loại dataset theo chủ đề            |
+| Dataset      | Sản phẩm dữ liệu trung tâm trong catalog      |
+| Resource     | Nguồn truy cập cụ thể của dataset             |
+| Tag          | Từ khóa mô tả nhanh dataset                   |
+| User         | Người sử dụng hoặc quản trị hệ thống          |
+| Data Quality | Mức độ đầy đủ và sẵn sàng sử dụng của dataset |
 
----
+***
 
 ## 3. Sơ đồ nghiệp vụ tổng thể
 
@@ -207,24 +184,17 @@ flowchart LR
 - Search là năng lực quan trọng nhất để biến catalog thành công cụ sử dụng thực tế.
 - Download, API Access và Reuse là nơi giá trị kinh doanh được tạo ra.
 
----
+***
 
 ## 4. Vai trò người dùng
 
-Trong CKAN hiện tại, quyền được kiểm soát theo 3 lớp:
+Quyền được kiểm soát theo 3 lớp:
 
 - Quyền toàn hệ thống của `SysAdmin`.
 - Quyền trong phạm vi organization: `Admin`, `Editor`, `Member`.
 - Quyền xem công khai cho `Anonymous User`.
 
-Lưu ý thêm:
-
-- Dataset collaborators là tính năng tùy chọn trong CKAN, không bật mặc định trong cấu hình lõi.
-- Trong tài liệu này, "Organization Admin" tương ứng vai trò `Admin` trong organization.
-
 ### SysAdmin
-
-**Quyền gì?**
 
 - Toàn quyền trên hệ thống.
 - Xem, sửa và quản trị mọi organization, dataset và user.
@@ -233,16 +203,12 @@ Lưu ý thêm:
 
 ### Organization Admin
 
-**Quyền gì?**
-
 - Quản trị organization của mình.
 - Thêm, xóa, thay đổi vai trò thành viên.
 - Tạo, sửa, publish dataset trong organization.
 - Xem dataset private của organization.
 
 ### Editor
-
-**Quyền gì?**
 
 - Tạo dataset trong organization.
 - Sửa metadata và resources.
@@ -252,15 +218,11 @@ Lưu ý thêm:
 
 ### Member
 
-**Quyền gì?**
-
 - Xem dataset private của organization.
 - Tìm kiếm và xem dữ liệu thuộc phạm vi organization.
 - Không tạo hoặc publish dataset nếu không được cấp thêm quyền khác.
 
 ### Anonymous User
-
-**Quyền gì?**
 
 - Xem dataset public.
 - Tìm kiếm dataset public.
@@ -270,30 +232,21 @@ Lưu ý thêm:
 
 ### Bảng phân quyền
 
-| Vai trò | Xem dataset public | Xem dataset private | Tạo dataset | Sửa dataset | Publish dataset | Quản lý thành viên | Quản trị toàn hệ thống |
-| ------- | ------------------ | ------------------- | ----------- | ----------- | --------------- | ------------------ | ---------------------- |
-| SysAdmin | Có | Có, toàn hệ thống | Có | Có | Có | Có | Có |
-| Organization Admin | Có | Có, trong organization của mình | Có | Có | Có | Có | Không |
-| Editor | Có | Có, trong organization của mình | Có | Có | Có | Không | Không |
-| Member | Có | Có, trong organization của mình | Không mặc định | Không mặc định | Không | Không | Không |
-| Anonymous User | Có | Không | Không mặc định | Không | Không | Không | Không |
+| Vai trò            | Xem dataset public | Xem dataset private             | Tạo dataset    | Sửa dataset    | Publish dataset | Quản lý thành viên | Quản trị toàn hệ thống |
+| ------------------ | ------------------ | ------------------------------- | -------------- | -------------- | --------------- | ------------------ | ---------------------- |
+| SysAdmin           | Có                 | Có, toàn hệ thống               | Có             | Có             | Có              | Có                 | Có                     |
+| Organization Admin | Có                 | Có, trong organization của mình | Có             | Có             | Có              | Có                 | Không                  |
+| Editor             | Có                 | Có, trong organization của mình | Có             | Có             | Có              | Không              | Không                  |
+| Member             | Có                 | Có, trong organization của mình | Không mặc định | Không mặc định | Không           | Không              | Không                  |
+| Anonymous User     | Có                 | Không                           | Không mặc định | Không          | Không           | Không              | Không                  |
 
-### Nhận xét nghiệp vụ
-
-- Organization là đơn vị chịu trách nhiệm chính cho dataset.
-- Admin và Editor là hai vai trò vận hành nội dung dữ liệu quan trọng nhất.
-- Member phù hợp cho vai trò tiêu thụ nội bộ dữ liệu.
-- Anonymous User phục vụ open data hoặc chia sẻ công khai.
-
----
+***
 
 ## 5. Luồng tạo Dataset
 
-Luồng tạo dataset trong CKAN hiện tại có thể diễn giải theo nghiệp vụ như sau.
-
 ### Bước 1: Người dùng tạo Dataset
 
-Người dùng có quyền phù hợp bắt đầu tạo một dataset mới. Trong CKAN core, thao tác này đi qua action `package_create`.
+Người dùng có quyền phù hợp bắt đầu tạo một dataset mới.&#x20;
 
 **Ý nghĩa nghiệp vụ**
 
@@ -321,7 +274,7 @@ Người dùng thêm file, URL hoặc nguồn truy cập dữ liệu cho dataset
 
 ### Bước 4: Publish
 
-Dataset được chuyển sang trạng thái sẵn sàng công bố, thường là `active`. Đồng thời cần xét thêm yếu tố public/private.
+Dataset được chuyển sang trạng thái sẵn sàng công bố. Đồng thời cần xét thêm yếu tố public/private.
 
 **Ý nghĩa nghiệp vụ**
 
@@ -362,48 +315,38 @@ sequenceDiagram
     W-->>U: Dataset đã được công bố
 ```
 
-### Góc nhìn vận hành
+<br />
 
-- Validation nằm trước lưu trữ.
-- Resource là phần con của dataset nhưng có vai trò quyết định khả năng sử dụng thực tế.
-- Publish và index là hai bước business rất quan trọng, không nên xem như chi tiết hạ tầng.
-
----
+***
 
 ## 6. Metadata của Dataset
 
-CKAN core trong repo hiện tại thể hiện dataset bằng model `package`. Ở góc nhìn nghiệp vụ, dataset có một tập metadata lõi giúp mô tả, phân loại, phân quyền và công bố dataset.
-
-Lưu ý:
-
-- Trong database, người tạo được lưu bằng trường `creator_user_id`.
-- Trong tài liệu này, để dễ đọc theo góc nhìn nghiệp vụ, trường này được diễn đạt là `creator`.
+Dataset có một tập metadata lõi giúp mô tả, phân loại, phân quyền và công bố dataset.
 
 ### Bảng metadata chính
 
-| Trường | Ý nghĩa nghiệp vụ | Bắt buộc theo business | Ghi chú |
-| ------ | ----------------- | ---------------------- | ------- |
-| `title` | Tên hiển thị của dataset | Nên có | Là trường người dùng nhìn thấy đầu tiên |
-| `notes` | Mô tả nội dung, phạm vi và ngữ cảnh | Nên có | Cực kỳ quan trọng cho hiểu và tái sử dụng |
-| `tags` | Từ khóa mô tả chủ đề | Nên có | Tăng khả năng search và discovery |
-| `owner_org` | Organization sở hữu dataset | Nên có trong môi trường enterprise | Phục vụ phân quyền và accountability |
-| `resources` | Danh sách nguồn dữ liệu cụ thể | Nên có | Dataset không có resource thường khó sử dụng |
-| `extras` | Metadata mở rộng | Nên có nếu có governance requirement | Dùng cho các trường business tùy biến |
-| `groups` | Nhóm phân loại theo chủ đề | Tùy chọn | Hỗ trợ duyệt catalog theo taxonomy |
-| `state` | Trạng thái lifecycle | Bắt buộc về mặt hệ thống | Ví dụ `draft`, `active`, `deleted` |
-| `creator` | Người tạo dataset | Nên lưu đầy đủ | Trong model lõi là `creator_user_id` |
+| Trường      | Ý nghĩa nghiệp vụ                   | Bắt buộc theo business               | Ghi chú                                      |
+| ----------- | ----------------------------------- | ------------------------------------ | -------------------------------------------- |
+| `title`     | Tên hiển thị của dataset            | Nên có                               | Là trường người dùng nhìn thấy đầu tiên      |
+| `notes`     | Mô tả nội dung, phạm vi và ngữ cảnh | Nên có                               | Cực kỳ quan trọng cho hiểu và tái sử dụng    |
+| `tags`      | Từ khóa mô tả chủ đề                | Nên có                               | Tăng khả năng search và discovery            |
+| `owner_org` | Organization sở hữu dataset         | Nên có trong môi trường enterprise   | Phục vụ phân quyền và accountability         |
+| `resources` | Danh sách nguồn dữ liệu cụ thể      | Nên có                               | Dataset không có resource thường khó sử dụng |
+| `extras`    | Metadata mở rộng                    | Nên có nếu có governance requirement | Dùng cho các trường business tùy biến        |
+| `groups`    | Nhóm phân loại theo chủ đề          | Tùy chọn                             | Hỗ trợ duyệt catalog theo taxonomy           |
+| `state`     | Trạng thái lifecycle                | Bắt buộc về mặt hệ thống             | Ví dụ `draft`, `active`, `deleted`           |
+| `creator`   | Người tạo dataset                   | Nên lưu đầy đủ                       | Trong model lõi là `creator_user_id`         |
 
 ### Giải thích từng trường
 
 #### `title`
 
-- Là tên business của dataset.
-- Cần rõ ràng, dễ hiểu, không quá kỹ thuật.
+- tên business của dataset.
 - Ảnh hưởng trực tiếp đến khả năng tìm kiếm và mức độ tin cậy của catalog.
 
 #### `notes`
 
-- Là mô tả chi tiết dataset.
+- mô tả chi tiết dataset.
 - Nên trả lời được: dữ liệu nói về gì, phạm vi thời gian nào, đơn vị đo là gì, ai sử dụng được.
 - Nếu `notes` quá ngắn, người dùng sẽ khó quyết định có nên dùng dataset hay không.
 
@@ -446,15 +389,11 @@ Lưu ý:
 - Xác định người khởi tạo dataset.
 - Hữu ích cho audit, truy vết và quản trị trách nhiệm.
 
-### Kết luận nghiệp vụ về metadata
-
-Metadata là lớp tạo giá trị cho dataset. Nếu resource là "dữ liệu có thật", thì metadata là "ngữ cảnh để dữ liệu có thể được hiểu, tìm thấy và tái sử dụng". CKAN mạnh ở chỗ nó chuẩn hóa lớp metadata này.
-
----
+***
 
 ## 7. Luồng Search Dataset
 
-Trong CKAN, search không chỉ là một tính năng hỗ trợ, mà là cửa ngõ chính để người dùng khám phá dữ liệu. Về nghiệp vụ, hành trình tìm kiếm diễn ra như sau:
+Search không chỉ là một tính năng hỗ trợ, mà là cửa ngõ chính để người dùng khám phá dữ liệu. Về nghiệp vụ, tìm kiếm diễn ra như sau:
 
 1. Người dùng nhập từ khóa hoặc bộ lọc.
 2. CKAN gửi truy vấn đến action `package_search`.
@@ -489,25 +428,19 @@ flowchart LR
 - Permission labels theo user và organization.
 - Metadata quality của title, notes, tags, groups, organization và resources.
 
-### Góc nhìn business
-
-- Search tốt biến catalog thành công cụ làm việc thực tế.
-- Search kém khiến người dùng nghĩ rằng tổ chức "không có dữ liệu", dù dữ liệu vẫn đang tồn tại.
-- Search index và governance metadata phải đi cùng nhau.
-
----
+***
 
 ## 8. Kiến trúc hệ thống
 
-Từ cấu hình và tài liệu trong repo hiện tại, kiến trúc CKAN bao gồm các thành phần chính sau:
+Các thành phần chính:
 
-- **CKAN**: ứng dụng web và API trung tâm, chạy business logic, quản trị metadata, quyền và workflow.
+- **CKAN**: ứng dụng web & API trung tâm, business logic, quản trị metadata, quyền và workflow.
 - **PostgreSQL**: lưu dữ liệu nghiệp vụ lõi như dataset, resource, user, group, membership.
 - **Solr**: công cụ search index cho dataset.
 - **Redis**: hỗ trợ cache, session và một số background capability.
 - **DataStore**: PostgreSQL dành cho dữ liệu dạng bảng của resource để query và preview.
 
-### Diễn giải vai trò từng thành phần
+### Chi tiết vai trò
 
 #### CKAN
 
@@ -536,13 +469,6 @@ Từ cấu hình và tài liệu trong repo hiện tại, kiến trúc CKAN bao 
 - Phù hợp cho preview và Data API.
 - Tách biệt với metadata catalog, nhưng liên kết chặt với resource.
 
-### Hiện trạng cấu hình trong repo này
-
-- Stack test/dev hiện tại dùng `ckan`, `ckan-postgres`, `ckan-solr`, `ckan-redis`.
-- Cấu hình `test-core.ini` và `test-core-ci.ini` thể hiện rõ kết nối tới PostgreSQL, Solr, Redis và DataStore.
-- DataStore dùng một database riêng về mặt logic, dù có thể cùng server PostgreSQL.
-- `test-core-local.ini` đang override `site_url` cho môi trường local.
-
 ### C4 Container Diagram
 
 ```mermaid
@@ -570,7 +496,7 @@ Rel(ckan_app, cache_runtime, "Dùng cho cache và runtime services")
 Rel(ckan_app, datastore_db, "Khai thác dữ liệu dạng bảng của resource")
 ```
 
-### Kết luận kiến trúc
+<br />
 
 CKAN là kiến trúc catalog tách rõ:
 
@@ -581,7 +507,7 @@ CKAN là kiến trúc catalog tách rõ:
 
 Sự tách lớp này giúp hệ thống vừa phù hợp cho quản trị catalog, vừa phù hợp cho khai thác dữ liệu thực tế.
 
----
+***
 
 ## 9. API chính
 
@@ -777,14 +703,14 @@ POST /api/3/action/resource_create
 
 ### Bảng tóm tắt API
 
-| API | Mục đích nghiệp vụ | Input chính | Output chính |
-| --- | ------------------ | ----------- | ------------ |
-| `package_search` | Tìm dataset | `q`, `fq`, `sort`, `rows` | Danh sách dataset + facets |
-| `package_show` | Xem chi tiết dataset | `id` | Dataset đầy đủ metadata |
-| `package_create` | Tạo dataset mới | `name`, `title`, `owner_org`, `resources` | Dataset mới tạo |
-| `organization_list` | Xem danh sách đơn vị sở hữu | `all_fields` | Danh sách organization |
-| `group_list` | Xem danh sách nhóm chủ đề | `all_fields` | Danh sách group |
-| `resource_create` | Thêm nguồn dữ liệu vào dataset | `package_id`, `url`, `format` | Resource mới tạo |
+| API                 | Mục đích nghiệp vụ             | Input chính                               | Output chính               |
+| ------------------- | ------------------------------ | ----------------------------------------- | -------------------------- |
+| `package_search`    | Tìm dataset                    | `q`, `fq`, `sort`, `rows`                 | Danh sách dataset + facets |
+| `package_show`      | Xem chi tiết dataset           | `id`                                      | Dataset đầy đủ metadata    |
+| `package_create`    | Tạo dataset mới                | `name`, `title`, `owner_org`, `resources` | Dataset mới tạo            |
+| `organization_list` | Xem danh sách đơn vị sở hữu    | `all_fields`                              | Danh sách organization     |
+| `group_list`        | Xem danh sách nhóm chủ đề      | `all_fields`                              | Danh sách group            |
+| `resource_create`   | Thêm nguồn dữ liệu vào dataset | `package_id`, `url`, `format`             | Resource mới tạo           |
 
 ### Ý nghĩa nghiệp vụ của Action API
 
@@ -792,23 +718,19 @@ POST /api/3/action/resource_create
 - Đây là cách chuẩn để hệ thống khác tham gia vòng đời quản trị dữ liệu.
 - Có thể dùng cho ingestion, synchronization, data catalog automation và quality control.
 
----
+***
 
 ## 10. Database Mapping
 
-CKAN core tổ chức dữ liệu theo các bảng lõi dưới đây.
-
-### Mapping chính
-
-| Đối tượng nghiệp vụ | Bảng / thực thể chính | Ý nghĩa |
-| ------------------- | --------------------- | ------- |
-| Dataset | `package` | Lưu metadata lõi của dataset |
-| Resource | `resource` | Lưu nguồn truy cập cụ thể của dataset |
-| User | `user` | Lưu tài khoản người dùng |
-| Group | `group` | Lưu group phân loại chủ đề |
-| Organization | `group` | Dùng chung bảng `group`, phân biệt bằng `type='organization'` |
-| Membership | `member` | Liên kết user, group, organization, package theo vai trò |
-| Tag | `tag` và `package_tag` | Gắn tag cho dataset |
+| Đối tượng nghiệp vụ | Bảng / thực thể chính  | Ý nghĩa                                                       |
+| ------------------- | ---------------------- | ------------------------------------------------------------- |
+| Dataset             | `package`              | Lưu metadata lõi của dataset                                  |
+| Resource            | `resource`             | Lưu nguồn truy cập cụ thể của dataset                         |
+| User                | `user`                 | Lưu tài khoản người dùng                                      |
+| Group               | `group`                | Lưu group phân loại chủ đề                                    |
+| Organization        | `group`                | Dùng chung bảng `group`, phân biệt bằng `type='organization'` |
+| Membership          | `member`               | Liên kết user, group, organization, package theo vai trò      |
+| Tag                 | `tag` và `package_tag` | Gắn tag cho dataset                                           |
 
 ### Quan hệ nghiệp vụ
 
@@ -819,11 +741,7 @@ CKAN core tổ chức dữ liệu theo các bảng lõi dưới đây.
 - Một organization có nhiều user theo các vai trò khác nhau.
 - Một user có thể thuộc nhiều organization.
 
-### Lưu ý quan trọng
-
-- `owner_org` trong `package` thể hiện quan hệ logic tới organization.
-- Ở CKAN core hiện tại, organization không phải bảng riêng mà là biến thể của `group`.
-- Bảng `member` là bảng rất quan trọng vì chứa logic membership và role.
+<br />
 
 ### ERD Mermaid
 
@@ -894,99 +812,12 @@ erDiagram
     TAG ||--o{ PACKAGE_TAG : labels
 ```
 
-### Diễn giải business của ERD
+### Chi tiết business của ERD
 
 - `PACKAGE` là hạt nhân của catalog.
 - `RESOURCE` là hiện thân thực tế của dữ liệu.
 - `GROUP` vừa đóng vai trò chủ đề, vừa đóng vai trò organization khi được đánh dấu tương ứng.
 - `MEMBER` là cầu nối giữa con người, vai trò và quyền trong hệ thống.
 
----
+***
 
-## 11. Các điểm cần lưu ý khi phát triển
-
-### Validation
-
-- Không nên chỉ kiểm tra form ở UI; validation nghiệp vụ cần đảm bảo ở API/action layer.
-- Metadata quan trọng như `title`, `notes`, `owner_org`, `resources` nên có rule rõ ràng.
-
-### Search Index
-
-- Sau khi tạo hoặc sửa dataset, cần đảm bảo dataset được reindex.
-- Nếu search index không đồng bộ, người dùng có thể không tìm thấy dataset hoặc thấy sai quyền truy cập.
-
-### Permission
-
-- Phân quyền của CKAN phụ thuộc mạnh vào organization, role và permission labels trên search index.
-- Khi thay đổi cơ chế quyền, đặc biệt với private dataset và collaborators, cần reindex lại dataset.
-
-### Metadata Quality
-
-- Chất lượng catalog phụ thuộc nhiều hơn vào metadata đầy đủ hơn là số lượng dataset.
-- Nên chuẩn hóa business glossary cho `title`, `notes`, `tags`, `extras`.
-
-### Dataset Lifecycle
-
-- Cần định nghĩa rõ vòng đời nghiệp vụ: draft, review, active, archived hoặc deleted.
-- Publish nên được xem là một cột mốc nghiệp vụ, không chỉ là thao tác kỹ thuật.
-
-### Organization Ownership
-
-- `owner_org` nên là trường gần như bắt buộc trong môi trường enterprise.
-- Không có ownership rõ ràng sẽ gây khó khăn cho governance và vận hành.
-
-### Resource Strategy
-
-- Một dataset có giá trị sử dụng thấp nếu không có resource truy cập rõ ràng.
-- Nên quy ước rõ resource nào là file, resource nào là API, resource nào là DataStore table.
-
-### Extras Governance
-
-- `extras` rất mạnh nhưng dễ bị lạm dụng nếu không có chuẩn.
-- Nên thống nhất danh sách custom fields và định nghĩa nghiệp vụ cho từng field.
-
----
-
-## 12. Slide Outline
-
-Mục tiêu của outline dưới đây là để một AI khác có thể chuyển trực tiếp thành PowerPoint mà không cần phân tích lại toàn bộ repo.
-
-| Slide | Tiêu đề | Nội dung chính | Hình minh họa đề xuất | Diagram đề xuất |
-| ----- | ------- | -------------- | --------------------- | --------------- |
-| 1 | Giới thiệu CKAN | CKAN là gì, tại sao tổ chức dùng CKAN, vai trò của một data catalog | Hình cổng dữ liệu doanh nghiệp | Không cần hoặc icon overview |
-| 2 | Bài toán kinh doanh | Dữ liệu phân tán, khó tìm, thiếu ownership, thiếu metadata | Hình dữ liệu nằm rải rác ở nhiều hệ thống | Flow đơn giản "data silos -> catalog" |
-| 3 | Giá trị mang lại | Search tốt hơn, governance tốt hơn, tái sử dụng tốt hơn | Hình người dùng tìm thấy dữ liệu nhanh | Value chain diagram |
-| 4 | Khái niệm chính | Organization, Group, Dataset, Resource, Tag, User, Data Quality | Bộ icon cho từng khái niệm | Concept map |
-| 5 | Vai trò người dùng | SysAdmin, Organization Admin, Editor, Member, Anonymous | Ma trận vai trò và quyền | Permission matrix |
-| 6 | Luồng nghiệp vụ tổng thể | Từ upload đến search, download và reuse | Minh họa hành trình dataset | Flowchart tổng thể |
-| 7 | Luồng tạo Dataset | Tạo dataset, nhập metadata, thêm resource, publish, index | Form metadata và upload file | Sequence diagram |
-| 8 | Metadata quan trọng | `title`, `notes`, `tags`, `owner_org`, `resources`, `extras`, `state`, `creator` | Form metadata mẫu | Metadata table / data card |
-| 9 | Data Quality Scoring | Tại sao cần chấm điểm, tiêu chí, ví dụ tính điểm | Gauge hoặc score card | Score formula / heatmap |
-| 10 | Luồng Search | Query -> Solr -> ranking -> permission -> kết quả | Thanh search và kết quả | Search flowchart |
-| 11 | Kiến trúc hệ thống | CKAN, PostgreSQL, Solr, Redis, DataStore | Sơ đồ container | C4 Container Diagram |
-| 12 | API chính | package_search, package_show, package_create, organization_list, group_list, resource_create | API cards | API interaction diagram |
-| 13 | Database Mapping | package, resource, user, group, organization, member, tag | Hình entity card | ERD Mermaid |
-| 14 | Điểm cần lưu ý khi phát triển | Validation, reindex, permission, metadata quality, lifecycle | Checklist kiến trúc | Risk and control diagram |
-| 15 | Kết luận và khuyến nghị | CKAN là nền tảng catalog dữ liệu, cần governance đi kèm, đề xuất triển khai tiếp theo | Lộ trình roadmap | Roadmap diagram |
-
-### Gợi ý cách trình bày PowerPoint
-
-- Ưu tiên 1 thông điệp chính cho mỗi slide.
-- Với slide nghiệp vụ, dùng ngôn ngữ business trước, thuật ngữ kỹ thuật sau.
-- Với slide kỹ thuật, luôn neo lại bằng câu hỏi "nó hỗ trợ nghiệp vụ gì?".
-- Với mọi bảng lớn, nên rút gọn thành 3 đến 5 ý chính khi lên slide.
-- Các Mermaid trong tài liệu này có thể được chuyển sang sơ đồ đẹp hơn khi dựng slide.
-
----
-
-## Kết luận cuối
-
-CKAN trong repo hiện tại thể hiện đúng bản chất của một nền tảng data catalog doanh nghiệp:
-
-- Có mô hình dữ liệu rõ cho dataset, resource, user, group và organization.
-- Có lớp action API rõ ràng cho tạo, xem, tìm kiếm và quản trị catalog.
-- Có cơ chế search riêng bằng Solr để biến metadata thành năng lực discovery thực sự.
-- Có quyền truy cập theo organization và lifecycle dataset phù hợp với quản trị dữ liệu.
-- Có thể mở rộng để phục vụ data quality, governance dashboard, automation và self-service data platform.
-
-Nếu triển khai đúng cách, CKAN không chỉ là nơi "đăng file dữ liệu", mà là một lớp sản phẩm dữ liệu giúp doanh nghiệp quản trị dữ liệu như một tài sản dùng được, tìm được và tái sử dụng được.

@@ -1,0 +1,11 @@
+{% ckan_extends %}
+
+{% block package_notes %}
+  {{ super() }}
+  <p class="mt-3">
+    <strong>{{ _("Quality Score") }}:</strong>
+    <span class="badge {{ h.quality_badge_class(pkg.quality_score) }}">
+      {{ pkg.quality_score }}/100
+    </span>
+  </p>
+{% endblock %}

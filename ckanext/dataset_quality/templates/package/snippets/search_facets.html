@@ -1,0 +1,38 @@
+<div class="filters" id="search-facets" hx-swap-oob="true" hx-swap="none">
+  <div>
+    {% set selected_quality = request.args.get('ext_quality') %}
+    {% set quality_options = [
+      ('high', _('High Quality'), _('quality >= 80')),
+      ('medium', _('Medium Quality'), _('quality >= 50')),
+      ('low', _('Low Quality'), _('quality < 50')),
+    ] %}
+
+    <section class="module module-narrow module-shallow">
+      <h2 class="module-heading">
+        <i class="fa fa-filter"></i>
+        {{ _('Quality') }}
+      </h2>
+      <nav aria-label="{{ _('Filter datasets by quality') }}">
+        <ul class="list-unstyled nav nav-simple nav-facet">
+          {% for value, label, description in quality_options %}
+            {% set active = selected_quality == value %}
+            {% set href = h.remove_url_param('ext_quality') if active else h.remove_url_param('ext_quality', replace=value) %}
+            <li class="nav-item{% if active %} active{% endif %}">
+              <a hx-boost="true" href="{{ href }}" data-bs-title="{{ description }}" data-bs-toggle="tooltip">
+                <span class="item-label">{{ label }}</span>
+                {% if active %}
+                  <span class="facet-close"><i class="fa fa-solid fa-circle-xmark"></i></span>
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </section>
+
+    {% for facet in facet_titles %}
+      {% snippet 'snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets %}
+    {% endfor %}
+  </div>
+  <a class="close no-text hide-filters"><i class="fa fa-times-circle"></i><span class="text">{{ _('close') }}</span></a>
+</div>

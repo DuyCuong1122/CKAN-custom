@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{% block page_primary_action %}
+  {{ super() }}
+  <div class="page_primary_action">
+    {% link_for _('Quality Report'), named_route='dataset_quality.quality_report_page', class_='btn btn-secondary', icon='bar-chart' %}
+  </div>
+{% endblock %}
